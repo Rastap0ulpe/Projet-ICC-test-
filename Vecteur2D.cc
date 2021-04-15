@@ -128,6 +128,4 @@ Vecteur2D Vecteur2D::operator~() const{
 }
 
 
-/*bool Vecteur2D::compare(const Vecteur2D& v) const {
-	return ((abs(v.x_-x_)<=1*pow(10,-10)) and (abs(v.y_-y_)<=1*pow(10,-10)));
-};*/
+
