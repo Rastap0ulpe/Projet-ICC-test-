@@ -1,11 +1,18 @@
 #pragma once
 
 namespace Physique{
-	inline constexpr double g(9.81);
-	inline constexpr double R(8.3144621);
-	inline constexpr double Mol_air(0.02896);
-	inline constexpr double Mol_eau(0.0180153);
+	extern const double g;
+	extern const double R;
+	extern const double Mol_air;
+	extern const double Mol_eau;	
+}
 
-
-	
+namespace const_sys{
+	extern const double v_loin;
+	extern const double P_loin;
+	extern const double T_loin;
+	extern const double h_loin;	
+	extern const double P_ref;
+	extern const double cte;
+	extern const double taux_hum;
 }

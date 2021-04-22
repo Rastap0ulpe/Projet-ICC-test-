@@ -7,7 +7,7 @@
 using namespace std;
 
 
-void ChampPotentiels::initialise(double v_loin, Montagne M ){
+void ChampPotentiels::initialise(double v_loin, Montagne const& M ){
 	Vecteur2D v_pot;
 	Vecteur2D v_lap(0,0);
 	for(size_t i(0); i< N_x;++i){
@@ -40,7 +40,7 @@ void ChampPotentiels::initialise(double v_loin, Montagne M ){
 	};
 	
 	
-void ChampPotentiels::calcule_laplacien(Montagne M){
+void ChampPotentiels::calcule_laplacien(Montagne const& M){
 	Vecteur2D v(0,0);
 	for(size_t i(1); i< N_x-1;++i){
 		for(size_t j(1); j< N_y-1;++j){
@@ -68,7 +68,7 @@ void ChampPotentiels::affiche_potentiel(){
 			
 			for(size_t k(0); k <N_z; ++k){
 				cout<<i<<" "<<j<<" "<<k<<" ";
-				cout<<champ_p[i][j][k].get_potentiel();
+				cout<<champ_p[i][j][k].get_potentiel()<<endl;
 			}
 		}
 	}
@@ -82,7 +82,7 @@ void ChampPotentiels::affiche_laplacien(){
 			
 			for(size_t k(1); k <N_z-1; ++k){
 				cout<<i<<" "<<j<<" "<<k<<" ";
-				cout<<champ_p[i][j][k].get_laplacien();
+				cout<<champ_p[i][j][k].get_laplacien()<<endl;
 			}
 		}
 	}

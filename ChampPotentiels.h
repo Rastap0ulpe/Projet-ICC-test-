@@ -35,8 +35,8 @@ class ChampPotentiels : public Boite3D{
 	champ_potentiel champ_p;
 	public:
 	ChampPotentiels(int x,int y, int z, double l): Boite3D(x,y,z,l), champ_p(N_x,std::vector<std::vector<Potentiel>>(N_y,std::vector<Potentiel>(N_z))){};
-	void initialise(double v_loin,Montagne M );
-	void calcule_laplacien(Montagne M);
+	void initialise(double v_loin,Montagne const& M );
+	void calcule_laplacien(Montagne const& M);
 	void affiche_potentiel();
 	void affiche_laplacien();
 	double erreur() ;
@@ -45,7 +45,7 @@ class ChampPotentiels : public Boite3D{
 	V_vent vitesse(unsigned int i, unsigned int j, unsigned int k);
 	void affiche_vitesse(V_vent vent_vit);
 	double V2(V_vent vent_vit);
-	//void test_affiche();
+	void test_affiche();
 
 	
 };
