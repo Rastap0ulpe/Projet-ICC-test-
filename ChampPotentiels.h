@@ -41,7 +41,7 @@ class ChampPotentiels : public Boite3D{
 	void affiche_laplacien() const;
 	double erreur() const;
 	void iteration();
-	void resolution(double error, unsigned int max, Montagne M , bool affiche=false); 
+	void resolution(double error, unsigned int max, Montagne const& M , bool affiche=false); 
 	V_vent vitesse(unsigned int i, unsigned int j, unsigned int k) const;
 	void affiche_vitesse(V_vent vent_vit) const;
 	double V2(V_vent vent_vit) const;

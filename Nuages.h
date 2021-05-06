@@ -50,9 +50,11 @@ class CubedAir{
  bool nuage() const{
 	 return pression_eau() > pression_rosee();
  };
+ 
  void reduit_taux_hum(unsigned double c){
 	 taux_hum *= c;
  };
+ 
   void augmente_taux_hum(unsigned double c){
 	 taux_hum *= c;
  };

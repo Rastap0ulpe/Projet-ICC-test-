@@ -59,7 +59,7 @@ void Ciel::affiche_nuage() const{
 vector<int> Ciel::precedente(double delta_t, int i,int j , int k) const{
 	vector<int> deplacement({i,j,k});
 	for (size_t n(0); n < 3; ++n){
-		deplacement[n]=deplacement[n]+trunc((air[i][j][k].get_vitesse[n]*(-delta_t))/lambda);
+		deplacement[n]= deplacement[n]+trunc((air[i][j][k].get_vitesse[n]*(-delta_t))/lambda);
 	}
 	
 	if (deplacement[0] >= N_x or deplacement[0]<0 or deplacement[1] >= N_y or deplacement[1]<0 or deplacement[2] >= N_z or deplacement[2]<0){

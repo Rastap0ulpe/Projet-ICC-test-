@@ -12,9 +12,9 @@ class Systeme: public Dessinable {
 	private:
 	ChampPotentiels champ_p;
 	Ciel ciel;
-	unique_ptr<MontagneAbstrait> M;
+	unique_ptr<Montagne> M;
 	public:
-	Systeme(MontagneAbstrait* m, int N_x, int N_y, int N_z, double lambda):champ_p(N_x,N_y,N_z,lambda),M(m),ciel(champ_p) {
+	Systeme(Montagne* m, int N_x, int N_y, int N_z, double lambda):champ_p(N_x,N_y,N_z,lambda),M(m),ciel(champ_p) {
 		champ_p.initialise(20,M);
 		champ_p.calcule_laplacien(M);
 	};

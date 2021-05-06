@@ -4,7 +4,7 @@
 using namespace std;
 
 
-double Montagne::altitude(double x, double y) const 
+double Montagne_simple::altitude(double x, double y) const 
 {
 
 	double a = H * exp(-pow(x - i_0, 2) / (2 * pow(sigma_i, 2)) - pow(y - j_0, 2) / (2 * pow(sigma_j, 2)));
@@ -13,7 +13,7 @@ double Montagne::altitude(double x, double y) const
 		return a;
 }
 
-void  Montagne::montagne_affiche() const {
+void  Montagne_simple::montagne_affiche() const {
 
 	cout<<"gaussienne de parametre :"<<endl;
 	cout<<"i0 = "<< i_0<<endl;
