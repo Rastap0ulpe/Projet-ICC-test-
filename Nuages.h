@@ -19,7 +19,7 @@ class CubedAir{
 	std::vector<double> set_vitesse(std::vector<double> v){
 		vitesse=v;
 	};
-	std::vector<double> get_vitesse(){
+	std::vector<double> get_vitesse() const{
 		return vitesse;
 	};
 	double norme2() const{
@@ -51,16 +51,16 @@ class CubedAir{
 	 return pression_eau() > pression_rosee();
  };
  
- void reduit_taux_hum(unsigned double c){
-	 taux_hum *= c;
+ void reduit_taux_hum(double c){
+	 taux_hum *= 1-c;
  };
  
-  void augmente_taux_hum(unsigned double c){
-	 taux_hum *= c;
+  void augmente_taux_hum(double c){
+	 taux_hum *= 1+c;
  };
  
  bool pluie(){
-	return (pression_eau() - const_sys::P_ref) > 100)
+	return pression_eau() - const_sys::P_ref > 100;
  };
 	
 };
@@ -75,10 +75,10 @@ class Ciel : public Boite3D{
 		Ciel(int x,int y, int z, double l,double vent);
 		void initialise_enthalpie();
 		void affiche_nuage() const;
-		std::vector<int> precedente(double delta_t, int i,int j , int k) const;
-		bool nuage(int i, int j,int k) const;
-		void reduit_taux_hum(int i, int j, int k, unsigned double c = 0.983);
-		void augmente_taux_hum(int i, int j, int k, unsigned double c = 1.05) ;
-		void pluie(int i, int j, int k);
+		std::vector<size_t> precedente(double delta_t, size_t i,size_t j , size_t k) const;
+		bool nuage(size_t i, size_t j,size_t k) const;
+		void reduit_taux_hum(size_t i, size_t j, size_t k, double c = 0.017);
+		void augmente_taux_hum(size_t i, size_t j, size_t k, double c = 0.05) ;
+		void pluie(size_t i, size_t j, size_t k);
 		
 };

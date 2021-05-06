@@ -124,7 +124,7 @@ void ChampPotentiels::iteration(){
 	}
 };
 
- void ChampPotentiels::resolution(double error, unsigned int max, Montagne M , bool affiche /*= false*/)  {
+ void ChampPotentiels::resolution(double error, unsigned int max, Montagne const& M , bool affiche /*= false*/)  {
 	unsigned int i(1);
 	while(this->erreur() > error and i < max){
 	//cout<<i<<" "<<erreur()<<endl; 

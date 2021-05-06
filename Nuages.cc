@@ -56,39 +56,42 @@ void Ciel::affiche_nuage() const{
 	
 }
 
-vector<int> Ciel::precedente(double delta_t, int i,int j , int k) const{
-	vector<int> deplacement({i,j,k});
-	for (size_t n(0); n < 3; ++n){
-		deplacement[n]= deplacement[n]+trunc((air[i][j][k].get_vitesse[n]*(-delta_t))/lambda);
-	}
+vector<size_t> Ciel::precedente(double delta_t, size_t i,size_t j , size_t k) const{
+	int d_i (i+trunc((-air[i][j][k].get_vitesse()[0]*delta_t)/lambda));
+	int d_j(j+trunc((-air[i][j][k].get_vitesse()[1]*delta_t)/lambda));
+	int d_k(k+trunc((-air[i][j][k].get_vitesse()[2]*delta_t)/lambda));
 	
-	if (deplacement[0] >= N_x or deplacement[0]<0 or deplacement[1] >= N_y or deplacement[1]<0 or deplacement[2] >= N_z or deplacement[2]<0){
-		deplacement={0,0,0};
-		return deplacement;
+	
+	if (d_i >= N_x or d_i<0 or d_j >= N_y or d_j<0 or d_k >= N_z or d_k<0){
+
+		return {0,0,0};
 	}
 	else{
-		return deplacement;
+		i=d_i;
+		j=d_j;
+		k=d_k;
+			return {i,j,k};
+		}
 	}
 	
-}
 
-bool Ciel::nuage() const{
+bool Ciel::nuage(size_t i, size_t j,size_t k) const{
 	return air[i][j][k].nuage();
 }
 
 
-void Ciel::reduit_taux_hum(int i, int j, int k){
-	air.[i][j][k].reduit_taux_hum();
+void Ciel::reduit_taux_hum(size_t i, size_t j, size_t k, double c){
+	air[i][j][k].reduit_taux_hum(c);
 }
-void Ciel::augmente_taux_hum(int i, int j, int k){
-	air.[i][j][k].augmente_taux_hum();
+void Ciel::augmente_taux_hum(size_t i, size_t j, size_t k, double c){
+	air[i][j][k].augmente_taux_hum(c);
 }
-void Ciel::Pluie(int i, int j, int k){
+void Ciel::pluie(size_t i, size_t j, size_t k){
 	if (air[i][j][k].pluie()){
 		air[i][j][k].reduit_taux_hum(0.95);
 		int n(0);
 		for (size_t t(k) ; t >=0; --t){
-			if(air[i][j][t].pluie){
+			if(air[i][j][t].pluie()){
 				++n;
 			}
 		}
