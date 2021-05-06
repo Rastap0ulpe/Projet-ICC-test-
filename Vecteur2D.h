@@ -15,11 +15,11 @@ class Vecteur2D{
 
 	//method de class
 	std::ostream& affiche(std::ostream& out) const;
-	//bool compare(const Vecteur2D& autre) const; plus besoin à priori
-	/*Vecteur2D addition(const Vecteur2D& autre) const;*/
-	Vecteur2D soustraction(const Vecteur2D& autre) const;
+	//bool compare(const Vecteur2D& autre) const; (remplacer par operateur ==)
+	/*Vecteur2D addition(const Vecteur2D& autre) const; (remplacer par operateur +)*/
+	//Vecteur2D soustraction(const Vecteur2D& autre) const; (remplacer par operateur -)
 	Vecteur2D oppose() const;
-	Vecteur2D mult(double k) const;
+	Vecteur2D mult(double k) const; /* multiplcation par scalaire*/
 	double prod_scal(const Vecteur2D& autre) const;
 	double norme() const;
 	double norme2() const;

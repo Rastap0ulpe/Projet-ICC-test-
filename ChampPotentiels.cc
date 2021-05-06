@@ -61,7 +61,7 @@ void ChampPotentiels::calcule_laplacien(Montagne const& M){
 		
 	};
 	
-void ChampPotentiels::affiche_potentiel(){
+void ChampPotentiels::affiche_potentiel() const{
 	for(size_t i(0); i< N_x;++i){
 		
 		for(size_t j(0); j< N_y;++j){
@@ -75,7 +75,7 @@ void ChampPotentiels::affiche_potentiel(){
 	
 };
 
-void ChampPotentiels::affiche_laplacien(){
+void ChampPotentiels::affiche_laplacien() const{
 	for(size_t i(1); i< N_x-1;++i){
 		
 		for(size_t j(1); j< N_y-1;++j){
@@ -89,7 +89,7 @@ void ChampPotentiels::affiche_laplacien(){
 	
 };
 
-double ChampPotentiels::erreur() {
+double ChampPotentiels::erreur() const {
 	double retour(0);
 	Vecteur2D v;
 	for(size_t i(1); i< N_x-1;++i){
@@ -144,7 +144,7 @@ void ChampPotentiels::iteration(){
 
 };
 
-V_vent ChampPotentiels::vitesse(unsigned int i, unsigned int j, unsigned int k){
+V_vent ChampPotentiels::vitesse(unsigned int i, unsigned int j, unsigned int k) const{ 
 	V_vent V={0,0,0};
 	if (i==0 or i == N_x-1 or j == 0 or j == N_y-1 or k==0 or k== N_z-1 ){
 		return V;
@@ -160,18 +160,18 @@ V_vent ChampPotentiels::vitesse(unsigned int i, unsigned int j, unsigned int k){
 	return V;
 };
 
-void ChampPotentiels::affiche_vitesse(V_vent vent_vit){
+void ChampPotentiels::affiche_vitesse(V_vent vent_vit) const{
 	cout<<vent_vit[0]<<" "<<vent_vit[1]<<" "<<vent_vit[2];
 };
 
-double ChampPotentiels::V2(V_vent vent_vit){
+double ChampPotentiels::V2(V_vent vent_vit) const{
 	double retour;
 	retour= vent_vit[0]*vent_vit[0] + vent_vit[1]*vent_vit[1] + vent_vit[2]*vent_vit[2];
 	return retour;
 	
 };
 
-void ChampPotentiels::test_affiche(){
+void ChampPotentiels::test_affiche() const{
 	for(size_t i(0); i< N_x;++i){
 		
 		for(size_t j(0); j< N_y;++j){

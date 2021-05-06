@@ -17,10 +17,10 @@ class Potentiel{
 	laplacien=v;
 	};
 	
-	Vecteur2D get_potentiel(){
+	Vecteur2D get_potentiel() const{
 		return potentiel;
 	};	
-	Vecteur2D get_laplacien(){
+	Vecteur2D get_laplacien() const{
 		return laplacien;
 	};
 	
@@ -37,15 +37,15 @@ class ChampPotentiels : public Boite3D{
 	ChampPotentiels(int x,int y, int z, double l): Boite3D(x,y,z,l), champ_p(N_x,std::vector<std::vector<Potentiel>>(N_y,std::vector<Potentiel>(N_z))){};
 	void initialise(double v_loin,Montagne const& M );
 	void calcule_laplacien(Montagne const& M);
-	void affiche_potentiel();
-	void affiche_laplacien();
-	double erreur() ;
+	void affiche_potentiel() const;
+	void affiche_laplacien() const;
+	double erreur() const;
 	void iteration();
 	void resolution(double error, unsigned int max, Montagne M , bool affiche=false); 
-	V_vent vitesse(unsigned int i, unsigned int j, unsigned int k);
-	void affiche_vitesse(V_vent vent_vit);
-	double V2(V_vent vent_vit);
-	void test_affiche();
+	V_vent vitesse(unsigned int i, unsigned int j, unsigned int k) const;
+	void affiche_vitesse(V_vent vent_vit) const;
+	double V2(V_vent vent_vit) const;
+	void test_affiche() const;
 
 	
 };
