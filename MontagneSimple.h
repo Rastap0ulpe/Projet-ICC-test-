@@ -1,7 +1,8 @@
 #pragma once
 #include <cmath>
-#include "MontagneAbstrait.h"
-class Montagne_simple:public Montagne{
+#include "Montagne.h"
+#include "SupportADessin.h"
+class Montagne_simple: public Montagne{
 	private:
 	double i_0;
 	double j_0;
@@ -13,5 +14,8 @@ class Montagne_simple:public Montagne{
 	double altitude(double x, double y) const override ;
 
 	void montagne_affiche() const override;
+	void dessine_sur(SupportADessin& support) override {
+		 support.dessine(*this); 
+		 }
 };
 

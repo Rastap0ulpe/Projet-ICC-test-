@@ -1,8 +1,8 @@
 #include <iostream>
 #include "Systeme.h"
-#include "TextViewer.h"
 #include <memory>
-#include "ChampPotentiels.h"
+
+
 
 using namespace std;
 
@@ -41,11 +41,11 @@ void Systeme::demarre(){
 	
 }
 void Systeme::deplacer_nuages(double delta_t /*=0.031 */){
-	for(size_t i(1); i< 29;++i){ //changer 29 a N_x avec une method get_Nx
+	for(size_t i(1); i< ciel.taille_x();++i){ //changer 29 a N_x avec une method get_Nx
 		
-		for(size_t j(1); j< 29;++j){
+		for(size_t j(1); j< ciel.taille_y();++j){
 			
-			for(size_t k(1); k <29; ++k){
+			for(size_t k(1); k <ciel.taille_z(); ++k){
 				vector<size_t> C({i,j,k});
 				vector<size_t> P(ciel.precedente(delta_t,i,j,k));
 				if (C!=P){

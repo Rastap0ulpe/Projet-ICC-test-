@@ -2,6 +2,7 @@
  
 #include <iostream>
 #include "SupportADessin.h"
+#include "Systeme.h"
  
 class TextViewer : public SupportADessin {
 public:
@@ -17,7 +18,7 @@ public:
   TextViewer& operator=(TextViewer&&) = default;
  
  virtual void dessine(Systeme  const& system) override;
-  //virtual void dessine(Montagne const& M) override; 
+  virtual void dessine(Montagne const& M) override; 
 private:
   std::ostream& flot;
 };

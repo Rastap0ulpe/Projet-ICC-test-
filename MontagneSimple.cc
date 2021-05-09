@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include "MontagneSimple.h"
 #include "Montagne.h"
 using namespace std;
 

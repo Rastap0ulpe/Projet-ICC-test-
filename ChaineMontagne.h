@@ -14,5 +14,8 @@ class ChaineMontagne : public MontagneAbstrait {
 	
 	double altitude(double x, double y) const override ;
 	void montagne_affiche() const override;
+	void dessine_sur(SupportADessin& support) override {
+		 support.dessine(*this); 
+		 }
 	
 };

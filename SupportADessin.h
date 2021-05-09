@@ -1,5 +1,6 @@
 #pragma once
 
+class Montagne;
 
 class Systeme;
 
@@ -9,6 +10,6 @@ class SupportADessin{
   // on suppose ici que les supports ne seront ni copiés ni déplacés
   virtual void dessine(Systeme const& system) = 0;
  
-  /*virtual void dessine(Montagne const& M) = 0;
-	*/
+  virtual void dessine(Montagne const& M) = 0;
+	
 };

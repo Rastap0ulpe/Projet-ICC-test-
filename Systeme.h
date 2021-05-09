@@ -6,6 +6,7 @@
 #include "Nuages.h"
 #include "constantes.h"
 #include <memory>
+#include "TextViewer.h"
 
 
 class Systeme: public Dessinable {

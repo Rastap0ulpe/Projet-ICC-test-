@@ -2,8 +2,9 @@
 #include <vector>
 #include <cmath>
 #include "Vecteur2D.h"
-#include "Montagne.h"
 #include "Boite3D.h"
+#include "Montagne.h"
+
 constexpr double epsilon(0.1);
 class Potentiel{
 	private:
