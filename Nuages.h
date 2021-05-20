@@ -52,11 +52,16 @@ class CubedAir{
  };
  
  void reduit_taux_hum(double c){
-	 taux_hum *= 1-c;
+	 if (c >= 0){
+		 taux_hum *= 1-c;
+	 }
  };
  
   void augmente_taux_hum(double c){
-	 taux_hum *= 1+c;
+	  if (c >= 0){
+		  taux_hum *= 1+c;
+	  }
+	 
  };
  
  bool pluie(){
@@ -75,7 +80,7 @@ class Ciel : public Boite3D{
 		Ciel(int x,int y, int z, double l,double vent);
 		void initialise_enthalpie();
 		void affiche_nuage() const;
-		std::vector<size_t> precedente(double delta_t, size_t i,size_t j , size_t k) const;
+		std::vector<size_t> precedente(size_t i,size_t j , size_t k, double delta_t=0.031) const;
 		bool nuage(size_t i, size_t j,size_t k) const;
 		void reduit_taux_hum(size_t i, size_t j, size_t k, double c = 0.017);
 		void augmente_taux_hum(size_t i, size_t j, size_t k, double c = 0.05) ;

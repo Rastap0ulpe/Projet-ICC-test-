@@ -1,16 +1,16 @@
 #pragma once
-#include "MontagneAbstrait.h"
 #include <memory>
-#include "Montagne.h"
 #include <vector>
+#include "Montagne.h"
+#include "MontagneSimple.h"
 
-typedef std::vector<std::unique_ptr<MontagneAbstrait>> Chaine;
-class ChaineMontagne : public MontagneAbstrait {
+typedef std::vector<std::unique_ptr<Montagne>> Chaine;
+class ChaineMontagne : public Montagne {
 	private:
 	Chaine composante;
 	
 	public:
-	ChaineMontagne(std::vector<MontagneAbstrait*> montagnes);
+	ChaineMontagne(std::vector<Montagne*> montagnes);
 	
 	double altitude(double x, double y) const override ;
 	void montagne_affiche() const override;

@@ -1,6 +1,7 @@
 #pragma once
 #include "Dessinable.h"
 
+
 class Montagne: public Dessinable{
 	public:
 	virtual double altitude(double x, double y) const = 0 ;

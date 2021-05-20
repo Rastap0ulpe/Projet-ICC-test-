@@ -35,13 +35,13 @@ void Systeme::demarre(){
 	Ciel c(champ_p);
 	ciel=c;
 	ciel.initialise_enthalpie();
-	dessine_sur(text);
+	//dessine_sur(text);
 	evolue();
 	
 	
 }
 void Systeme::deplacer_nuages(double delta_t /*=0.031 */){
-	for(size_t i(1); i< ciel.taille_x();++i){ //changer 29 a N_x avec une method get_Nx
+	for(size_t i(1); i< ciel.taille_x();++i){
 		
 		for(size_t j(1); j< ciel.taille_y();++j){
 			

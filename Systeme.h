@@ -18,6 +18,7 @@ class Systeme: public Dessinable {
 	Systeme(Montagne* m, int N_x, int N_y, int N_z, double lambda):champ_p(N_x,N_y,N_z,lambda),M(m),ciel(champ_p) {
 		champ_p.initialise(20,*M);
 		champ_p.calcule_laplacien(*M);
+		
 	};
 	void deplacer_nuages(double delta_t = 0.031);
 	std::ostream& affiche(std::ostream& out) const;

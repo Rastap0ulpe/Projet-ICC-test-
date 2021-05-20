@@ -56,7 +56,7 @@ void Ciel::affiche_nuage() const{
 	
 }
 
-vector<size_t> Ciel::precedente(double delta_t, size_t i,size_t j , size_t k) const{
+vector<size_t> Ciel::precedente(size_t i,size_t j , size_t k, double delta_t /*=0.031*/ ) const{
 	int d_i (i+trunc((-air[i][j][k].get_vitesse()[0]*delta_t)/lambda));
 	int d_j(j+trunc((-air[i][j][k].get_vitesse()[1]*delta_t)/lambda));
 	int d_k(k+trunc((-air[i][j][k].get_vitesse()[2]*delta_t)/lambda));

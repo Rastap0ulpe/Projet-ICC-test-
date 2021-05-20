@@ -1,5 +1,7 @@
 #include <iostream> // pour endl
 #include "TextViewer.h"
+#include "Montagne.h"
+#include "Nuages.h"
 using namespace std;
  
 void TextViewer::dessine(Systeme  const& system)

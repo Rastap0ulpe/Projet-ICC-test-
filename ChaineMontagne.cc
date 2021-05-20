@@ -1,5 +1,7 @@
 #include <iostream>
 #include "ChaineMontagne.h"
+#include "Montagne.h"
+#include "MontagneSimple.h"
 #include <memory>
 #include <vector>
 #include <cmath>
@@ -7,11 +9,11 @@
 
 using namespace std;
 
-ChaineMontagne::ChaineMontagne(vector<MontagneAbstrait*> montagnes){
+ChaineMontagne::ChaineMontagne(vector<Montagne*> montagnes){
 	
 	for (auto montagne : montagnes){
 		if(montagne != nullptr){
-		composante.push_back(unique_ptr<MontagneAbstrait>(montagne));
+		composante.push_back(unique_ptr<Montagne>(montagne));
 		}
 	}
 	
