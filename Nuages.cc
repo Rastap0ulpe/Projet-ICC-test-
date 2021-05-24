@@ -9,6 +9,7 @@ Ciel::Ciel(ChampPotentiels Champ_Potentiel):Boite3D(Champ_Potentiel.taille_x(),C
 		for(size_t j(0); j< N_y;++j){
 			for(size_t k(0); k <N_z; ++k){
 				air[i][j][k].set_vitesse(Champ_Potentiel.vitesse(i,j,k));
+				air[i][j][k].initialise_taux_hum();
 			}
 		}
 	}
@@ -20,6 +21,7 @@ Ciel::Ciel(int x,int y, int z, double l,double vent): Boite3D(x,y,z,l), air(N_x,
 		for(size_t j(0); j< N_y;++j){
 			for(size_t k(0); k <N_z; ++k){
 				air[i][j][k].set_vitesse(v);
+				air[i][j][k].initialise_taux_hum();
 			}
 		}
 	}
@@ -34,6 +36,7 @@ void Ciel::initialise_enthalpie(){
 			
 			for(size_t k(0); k <N_z; ++k){
 				air[i][j][k].set_enthalpie(k*l);
+				
 			
 				
 			}
@@ -57,14 +60,17 @@ void Ciel::affiche_nuage() const{
 }
 
 vector<size_t> Ciel::precedente(size_t i,size_t j , size_t k, double delta_t /*=0.031*/ ) const{
-	int d_i (i+trunc((-air[i][j][k].get_vitesse()[0]*delta_t)/lambda));
-	int d_j(j+trunc((-air[i][j][k].get_vitesse()[1]*delta_t)/lambda));
-	int d_k(k+trunc((-air[i][j][k].get_vitesse()[2]*delta_t)/lambda));
+	int d_i (i-trunc(((air[i][j][k].get_vitesse()[0]*delta_t)/lambda)));
+
+	int d_j(j-trunc(((air[i][j][k].get_vitesse()[1]*delta_t)/lambda)));
+
+	int d_k(k-trunc(((air[i][j][k].get_vitesse()[2]*delta_t)/lambda)));
+
 	
 	
 	if (d_i >= N_x or d_i<0 or d_j >= N_y or d_j<0 or d_k >= N_z or d_k<0){
 
-		return {0,0,0};
+		return {55,55,55}; //code pour non nuageux
 	}
 	else{
 		i=d_i;

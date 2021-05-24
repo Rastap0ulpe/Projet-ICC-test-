@@ -145,7 +145,7 @@ void ChampPotentiels::iteration(){
 };
 
 V_vent ChampPotentiels::vitesse(unsigned int i, unsigned int j, unsigned int k) const{ 
-	V_vent V={0,0,0};
+	V_vent V={20,0,0};
 	if (i==0 or i == N_x-1 or j == 0 or j == N_y-1 or k==0 or k== N_z-1 ){
 		return V;
 	}

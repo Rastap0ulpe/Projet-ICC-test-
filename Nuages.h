@@ -16,7 +16,7 @@ class CubedAir{
 	void set_hum(double t){
 		taux_hum=t;
 	};
-	std::vector<double> set_vitesse(std::vector<double> v){
+	void set_vitesse(std::vector<double> v){
 		vitesse=v;
 	};
 	std::vector<double> get_vitesse() const{
@@ -36,16 +36,19 @@ class CubedAir{
 	double get_enthalpie() const{
 		return enthalpie;
 	};
+	void initialise_taux_hum(){
+		taux_hum=const_sys::taux_hum;
+	};
 	double pression() const{
 		return const_sys::P_loin*pow(const_sys::T_loin,(-7.0/2.0))*pow(temperature(),7.0/2.0);
 	};
 	
 	double pression_eau() const{
-		return (const_sys::taux_hum)/((Physique::Mol_eau/Physique::Mol_air)+const_sys::taux_hum)*pression();
+		return ((taux_hum)/((Physique::Mol_eau/Physique::Mol_air)+taux_hum))*pression();
 	};
 	
 	double pression_rosee() const{
-	 return const_sys::P_ref*exp(13.96-5208.0/temperature());
+	 return const_sys::P_ref*exp(13.96-(5208.0/temperature()));
  };
  bool nuage() const{
 	 return pression_eau() > pression_rosee();

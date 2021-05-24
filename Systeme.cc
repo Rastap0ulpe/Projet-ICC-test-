@@ -22,7 +22,6 @@ ostream& operator<<(ostream& out, Systeme const& s){
 };
 
 void Systeme::evolue(){
-	ciel.initialise_enthalpie();
 	deplacer_nuages();
 	TextViewer text(cout);
 	dessine_sur(text);
@@ -34,32 +33,47 @@ void Systeme::demarre(){
 	champ_p.resolution(0.000022621843,3000,*M);
 	Ciel c(champ_p);
 	ciel=c;
+	cout<<champ_p.vitesse(5,23,1)[0]<<" "<<champ_p.vitesse(5,23,1)[1]<<" "<<champ_p.vitesse(5,23,1)[2]<<endl;
+	vector<size_t> P(ciel.precedente(5,23,1));
+	cout<<P[0]<<" "<<P[1]<<" "<<P[2]<<endl;
 	ciel.initialise_enthalpie();
-	//dessine_sur(text);
+		if (ciel.nuage(4,23,1)){
+		cout<<"fuck"<<endl;
+	}
+	else{
+		cout<<"yikes"<<endl; 
+	}
+	dessine_sur(text);
 	evolue();
 	
 	
 }
 void Systeme::deplacer_nuages(double delta_t /*=0.031 */){
-	for(size_t i(1); i< ciel.taille_x();++i){
+	Ciel ciel_nouveau(ciel);
+	for(size_t i(1); i< ciel.taille_x()-1;++i){
 		
-		for(size_t j(1); j< ciel.taille_y();++j){
+		for(size_t j(1); j< ciel.taille_y()-1;++j){
 			
-			for(size_t k(1); k <ciel.taille_z(); ++k){
+			for(size_t k(1); k <ciel.taille_z()-1; ++k){
 				vector<size_t> C({i,j,k});
-				vector<size_t> P(ciel.precedente(delta_t,i,j,k));
-				if (C!=P){
+				vector<size_t> P(ciel.precedente(i,j,k,delta_t));
+				vector<size_t> non_nuage({55,55,55}); //code non nuageux et indice qui sort du boite 
+				if (P==non_nuage and ciel.nuage(C[0],C[1],C[2])){
+						ciel_nouveau.reduit_taux_hum(C[0],C[1],C[2]);
+				}
+				else if (C!=P){
 					if(ciel.nuage(C[0],C[1],C[2]) and not ciel.nuage(P[0],P[1],P[2]) ){
-						ciel.reduit_taux_hum(C[0],C[1],C[2]);
+						ciel_nouveau.reduit_taux_hum(C[0],C[1],C[2]);
 					}
-					if (not ciel.nuage(C[0],C[1],C[2]) and ciel.nuage(P[0],P[1],P[2]) ){
-						ciel.augmente_taux_hum(C[0],C[1],C[2]);
+					else if (not ciel.nuage(C[0],C[1],C[2]) and ciel.nuage(P[0],P[1],P[2]) ){
+						ciel_nouveau.augmente_taux_hum(C[0],C[1],C[2]);
 					}
 				}
 				
-				ciel.pluie(i,j,k);
+				ciel_nouveau.pluie(i,j,k);
 			}
 		}
 	}
+	ciel=ciel_nouveau;
 	
 }

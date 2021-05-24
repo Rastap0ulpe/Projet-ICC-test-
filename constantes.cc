@@ -4,7 +4,8 @@ namespace Physique{
 	extern const double g(9.81);
 	extern const double R(8.3144621);
 	extern const double Mol_air(0.02896);
-	extern const double Mol_eau(0.0180153);	
+	extern const double Mol_eau(0.0180153);		
+	
 }
 
 namespace const_sys{
