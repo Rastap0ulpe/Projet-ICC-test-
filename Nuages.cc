@@ -51,8 +51,7 @@ void Ciel::affiche_nuage() const{
 			
 			for(size_t k(1); k <N_z-1; ++k){
 				
-				cout<<i<<" "<<j<<" "<<k<<" "<<air[i][j][k].norme2()<< " "<<air[i][j][k].get_enthalpie()<<" "<<air[i][j][k].temperature()<<" "<<air[i][j][k].pression()<<" "<<air[i][j][k].pression_eau()<< " "<< air[i][j][k].pression_rosee() << " "<< air[i][j][k].nuage()<<endl;
-				
+				affiche_cube(i,j,k);
 			}
 		}
 	}
@@ -92,16 +91,38 @@ void Ciel::reduit_taux_hum(size_t i, size_t j, size_t k, double c){
 void Ciel::augmente_taux_hum(size_t i, size_t j, size_t k, double c){
 	air[i][j][k].augmente_taux_hum(c);
 }
-void Ciel::pluie(size_t i, size_t j, size_t k){
-	if (air[i][j][k].pluie()){
-		air[i][j][k].reduit_taux_hum(0.95);
-		int n(0);
-		for (size_t t(k) ; t >=0; --t){
-			if(air[i][j][t].pluie()){
-				++n;
+void Ciel::pluie(){
+	for(size_t i(1); i< N_x-1;++i){
+		unsigned int n(0);
+		size_t k_max(0);
+		
+		for(size_t j(1); j< N_y-1;++j){
+			
+			for(size_t k(1); k <N_z-1; ++k){
+				if (air[i][j][k].pluie()){
+					air[i][j][k].reduit_taux_hum();
+					++n;
 			}
 		}
-		cout<<"le quantite de pluie au sol est: "<<n<<endl;
+		if (n !=0){
+		cout<<i<<" "<<j<<" la quantite de pluie au sol est: "<<n<<endl;
+	}
 	}
 }
+}
+				
+			
 	
+
+
+void Ciel::affiche_cube(size_t i, size_t j, size_t k) const{
+	cout<<i<<" "<<j<<" "<<k<<" "<<air[i][j][k].norme2()<< " "<<air[i][j][k].get_enthalpie()<<" "<<air[i][j][k].temperature()<<" "<<air[i][j][k].pression()<<" "<<air[i][j][k].pression_eau()<< " "<< air[i][j][k].pression_rosee() << " "<< air[i][j][k].nuage()<<endl;
+};
+
+std::vector<double> Ciel::get_vitesse_cube(size_t i, size_t j,size_t k) const{
+	return air[i][j][k].get_vitesse();
+}
+
+double Ciel::get_norme_cube(size_t i, size_t j,size_t k) const{
+	return air[i][j][k].norme();
+}

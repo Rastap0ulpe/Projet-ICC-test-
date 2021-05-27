@@ -22,9 +22,12 @@ ostream& operator<<(ostream& out, Systeme const& s){
 };
 
 void Systeme::evolue(){
+	ciel.pluie();
+	cout<<endl;
 	deplacer_nuages();
 	TextViewer text(cout);
 	dessine_sur(text);
+	cout<<endl;
 }
 
 
@@ -34,7 +37,8 @@ void Systeme::demarre(){
 	Ciel c(champ_p);
 	ciel=c;
 	ciel.initialise_enthalpie();
-	dessine_sur(text);
+	dessine_sur(text); // 
+	cout<<endl;
 	evolue();
 	
 	
@@ -61,10 +65,25 @@ void Systeme::deplacer_nuages(double delta_t /*=0.031 */){
 					}
 				}
 				
-				ciel_nouveau.pluie(i,j,k);
+				
 			}
 		}
 	}
 	ciel=ciel_nouveau;
 	
+}
+
+void Systeme::affiche_ciel_system() const{
+	for(size_t i(1); i < ciel.taille_x()-1;++i){
+		
+		for(size_t j(1); j< ciel.taille_y()-1;++j){
+		
+			for(size_t k(1); k <ciel.taille_z()-1; ++k){
+				if (ciel.nuage(i,j,k)) {
+					ciel.affiche_cube(i,j,k);
+				}
+
+			}
+		}
+}
 }

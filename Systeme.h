@@ -25,9 +25,7 @@ class Systeme: public Dessinable {
 	void demarre();
 	virtual void dessine_sur(SupportADessin& support) override {
 		 support.dessine(*this); 
-		 }
-	void affiche_nuage_system() const{
-		ciel.affiche_nuage();
-	}
+		 };
+	void affiche_ciel_system() const;
 };
 std::ostream& operator<<(std::ostream& out, Systeme const& s);

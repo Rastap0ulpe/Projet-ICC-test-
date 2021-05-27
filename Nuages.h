@@ -22,8 +22,11 @@ class CubedAir{
 	std::vector<double> get_vitesse() const{
 		return vitesse;
 	};
+	double norme() const{
+		return sqrt(vitesse[0]*vitesse[0]+vitesse[1]*vitesse[1]+vitesse[2]*vitesse[2]);
+	}
 	double norme2() const{
-		return vitesse[0]*vitesse[0]+vitesse[1]*vitesse[1]+vitesse[2]*vitesse[2];
+		return norme()*norme();
 	}
 	double temperature() const{
 		double t;
@@ -54,13 +57,13 @@ class CubedAir{
 	 return pression_eau() > pression_rosee();
  };
  
- void reduit_taux_hum(double c){
+ void reduit_taux_hum(double c = 0.017){
 	 if (c >= 0){
 		 taux_hum *= 1-c;
 	 }
  };
  
-  void augmente_taux_hum(double c){
+  void augmente_taux_hum(double c = 0.05){
 	  if (c >= 0){
 		  taux_hum *= 1+c;
 	  }
@@ -68,7 +71,7 @@ class CubedAir{
  };
  
  bool pluie(){
-	return pression_eau() - const_sys::P_ref > 100;
+	return pression_eau() > 1315;
  };
 	
 };
@@ -87,6 +90,9 @@ class Ciel : public Boite3D{
 		bool nuage(size_t i, size_t j,size_t k) const;
 		void reduit_taux_hum(size_t i, size_t j, size_t k, double c = 0.017);
 		void augmente_taux_hum(size_t i, size_t j, size_t k, double c = 0.05) ;
-		void pluie(size_t i, size_t j, size_t k);
+		void pluie();
+		void affiche_cube(size_t i, size_t j, size_t k) const;
+		std::vector<double> get_vitesse_cube(size_t i, size_t j,size_t k) const;
+		double get_norme_cube(size_t i, size_t j,size_t k) const;
 		
 };
