@@ -21,30 +21,26 @@ ostream& operator<<(ostream& out, Systeme const& s){
 	return s.affiche(out);
 };
 
-void Systeme::evolue(){
-	ciel.pluie();
-	cout<<endl;
-	deplacer_nuages();
-	TextViewer text(cout);
-	dessine_sur(text);
-	cout<<endl;
+void Systeme::evolue(double dt /* = 0.031*/){
+	//ciel.pluie();
+	deplacer_nuages(dt);
+	//dessine_sur(support);
 }
 
 
-void Systeme::demarre(){
-	TextViewer text(cout);
-	champ_p.resolution(0.000022621843,3000,*M);
+void Systeme::demarre(double dt){
+   	champ_p.resolution(0.000022621843,3000,*M);
 	Ciel c(champ_p);
 	ciel=c;
 	ciel.initialise_enthalpie();
-	dessine_sur(text); // 
-	cout<<endl;
-	evolue();
+    /*dessine_sur(support); //
+	cout<<endl;*/
+    evolue(dt);
 	
 	
 }
-void Systeme::deplacer_nuages(double delta_t /*=0.031 */){
-	Ciel ciel_nouveau(ciel);
+void Systeme::deplacer_nuages(double delta_t ){
+    Ciel ciel_nouveau(ciel);
 	for(size_t i(1); i< ciel.taille_x()-1;++i){
 		
 		for(size_t j(1); j< ciel.taille_y()-1;++j){
@@ -54,14 +50,14 @@ void Systeme::deplacer_nuages(double delta_t /*=0.031 */){
 				vector<size_t> P(ciel.precedente(i,j,k,delta_t));
 				vector<size_t> non_nuage({55,55,55}); //code non nuageux et indice qui sort du boite 
 				if (P==non_nuage and ciel.nuage(C[0],C[1],C[2])){
-						ciel_nouveau.reduit_taux_hum(C[0],C[1],C[2]);
+                        ciel_nouveau.reduit_taux_hum(C[0],C[1],C[2]);
 				}
 				else if (C!=P){
 					if(ciel.nuage(C[0],C[1],C[2]) and not ciel.nuage(P[0],P[1],P[2]) ){
-						ciel_nouveau.reduit_taux_hum(C[0],C[1],C[2]);
+                        ciel_nouveau.reduit_taux_hum(C[0],C[1],C[2]);
 					}
 					else if (not ciel.nuage(C[0],C[1],C[2]) and ciel.nuage(P[0],P[1],P[2]) ){
-						ciel_nouveau.augmente_taux_hum(C[0],C[1],C[2]);
+                        ciel_nouveau.augmente_taux_hum(C[0],C[1],C[2]);
 					}
 				}
 				
@@ -69,7 +65,7 @@ void Systeme::deplacer_nuages(double delta_t /*=0.031 */){
 			}
 		}
 	}
-	ciel=ciel_nouveau;
+    ciel=ciel_nouveau;
 	
 }
 

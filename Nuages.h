@@ -33,7 +33,7 @@ class CubedAir{
 		t= enthalpie*(Physique::Mol_air/Physique::R)*(2.0/7.0);
 		return t;
 	}
-	void set_enthalpie(double z){
+    void set_enthalpie(double z){
 		enthalpie=const_sys::cte - Physique::g *z -0.5*norme2();
 	};
 	double get_enthalpie() const{
@@ -47,7 +47,7 @@ class CubedAir{
 	};
 	
 	double pression_eau() const{
-		return ((taux_hum)/((Physique::Mol_eau/Physique::Mol_air)+taux_hum))*pression();
+        return ((taux_hum)/((Physique::Mol_eau/Physique::Mol_air)+taux_hum))*pression();
 	};
 	
 	double pression_rosee() const{
@@ -70,8 +70,8 @@ class CubedAir{
 	 
  };
  
- bool pluie(){
-	return pression_eau() > 1315;
+ bool pluie() const{
+	return pression_eau() > pression_rosee()*1.03;
  };
 	
 };
@@ -91,6 +91,7 @@ class Ciel : public Boite3D{
 		void reduit_taux_hum(size_t i, size_t j, size_t k, double c = 0.017);
 		void augmente_taux_hum(size_t i, size_t j, size_t k, double c = 0.05) ;
 		void pluie();
+		bool pluie_GL(size_t i, size_t j, size_t k) const;
 		void affiche_cube(size_t i, size_t j, size_t k) const;
 		std::vector<double> get_vitesse_cube(size_t i, size_t j,size_t k) const;
 		double get_norme_cube(size_t i, size_t j,size_t k) const;

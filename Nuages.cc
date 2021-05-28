@@ -35,7 +35,7 @@ void Ciel::initialise_enthalpie(){
 		for(size_t j(0); j< N_y;++j){
 			
 			for(size_t k(0); k <N_z; ++k){
-				air[i][j][k].set_enthalpie(k*l);
+                air[i][j][k].set_enthalpie(k*l);
 				
 			
 				
@@ -94,7 +94,6 @@ void Ciel::augmente_taux_hum(size_t i, size_t j, size_t k, double c){
 void Ciel::pluie(){
 	for(size_t i(1); i< N_x-1;++i){
 		unsigned int n(0);
-		size_t k_max(0);
 		
 		for(size_t j(1); j< N_y-1;++j){
 			
@@ -104,9 +103,9 @@ void Ciel::pluie(){
 					++n;
 			}
 		}
-		if (n !=0){
-		cout<<i<<" "<<j<<" la quantite de pluie au sol est: "<<n<<endl;
-	}
+		/*if (n !=0){
+        cout<<i<<" "<<j<<" la quantite de pluie au sol est: "<<n<<endl;
+    }*/
 	}
 }
 }
@@ -125,4 +124,8 @@ std::vector<double> Ciel::get_vitesse_cube(size_t i, size_t j,size_t k) const{
 
 double Ciel::get_norme_cube(size_t i, size_t j,size_t k) const{
 	return air[i][j][k].norme();
+}
+
+bool Ciel::pluie_GL(size_t i, size_t j, size_t k) const {
+    return air[i][j][k].pluie();
 }
