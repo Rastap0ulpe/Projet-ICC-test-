@@ -9,7 +9,7 @@ double Montagne_simple::altitude(double x, double y) const
 {
 
 	double a = H * exp(-pow(x - i_0, 2) / (2 * pow(sigma_i, 2)) - pow(y - j_0, 2) / (2 * pow(sigma_j, 2)));
-	if (a < 0.5) { a = 0; }
+    if (a < 0.5) { a = 0; }
 
 		return a;
 }

@@ -36,6 +36,7 @@ class VueOpenGL : public SupportADessin {
   void dessineCube(QMatrix4x4 const& point_de_vue = QMatrix4x4() );
   void dessinecarre(QMatrix4x4 const& point_de_vue, Vecteur3D p1, Vecteur3D p2, Vecteur3D p3, Vecteur3D p4);
   void dessinevecteur(QMatrix4x4 const& point_de_vue, Vecteur3D v);
+  void dessinepluie(QMatrix4x4 const& point_de_vue);
  private:
   // Un shader OpenGL encapsulé dans une classe Qt
   QOpenGLShaderProgram prog;

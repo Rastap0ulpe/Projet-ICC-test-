@@ -113,13 +113,13 @@ Vecteur3D vec(0,0,0);
                 }
                 if(a_dessiner.systeme_pluie(i,j,k)){
                     prog.setAttributeValue(CouleurId, 0.0, 0.0, 1.0);
-                    /* ajouter valeur pour dessiner pluie
-                    vec.x=??;
-                    vec.y=??;
-                    vec.z=??;
-                    dessinevecteur(matrice,vec);
-                    */
 
+                    for(size_t l(1);l<=k;l++){
+                        matrice.setToIdentity();
+                        matrice.translate(i,j,l);
+                        dessinepluie(matrice);
+
+                    }
 
 
                 }
@@ -277,6 +277,26 @@ void VueOpenGL::dessinevecteur(const QMatrix4x4 &point_de_vue, Vecteur3D v){
 
     prog.setAttributeValue(SommetId, 0.0, 0.0, 0.0);
     prog.setAttributeValue(SommetId, v.x, v.y, v.z);
+
+
+    glEnd();
+
+}
+
+void VueOpenGL::dessinepluie(const QMatrix4x4 &point_de_vue){
+    prog.setUniformValue("vue_modele", matrice_vue * point_de_vue);
+
+    glBegin(GL_LINES);
+    //prog.setAttributeValue(CouleurId, 1.0, 0.0, 0.0);
+
+    prog.setAttributeValue(SommetId, 0.3, 0.3, 0.1);
+    prog.setAttributeValue(SommetId, 0.3, 0.3, 0.9);
+
+    prog.setAttributeValue(SommetId, 0.7, 0.5, 0.1);
+    prog.setAttributeValue(SommetId, 0.7, 0.5, 0.9);
+
+    prog.setAttributeValue(SommetId, 0.5, 0.8, 0.1);
+    prog.setAttributeValue(SommetId, 0.5, 0.8, 0.9);
 
 
     glEnd();
