@@ -1,6 +1,7 @@
 TEMPLATE = lib
 
-CONFIG = staticlib
+
+CONFIG =staticlib
 QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES = ..\..\ChaineMontagne.cc \

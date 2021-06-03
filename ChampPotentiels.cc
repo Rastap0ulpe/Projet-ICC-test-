@@ -11,7 +11,7 @@ void ChampPotentiels::initialise(double v_loin, Montagne const& M ){
 	Vecteur2D v_pot;
 	Vecteur2D v_lap(0,0);
 	for(size_t i(0); i< N_x;++i){
-		double x_i(lambda*i);
+
 		for(size_t j(0); j< N_y;++j){
 			double y_j(lambda*(j-((N_y-1)*0.5)));
 			for(size_t k(0); k <N_z; ++k){

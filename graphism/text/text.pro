@@ -25,7 +25,6 @@ HEADERS += \
     ../../support_a_dessin.h \
     ../../ChaineMontagne.h \
     ../../MontagneSimple.h \
-    ../../Montagne.h \
     ../../Systeme.h \
     ../../ChampPotentiels.h \
     ../../Vecteur2D.h \

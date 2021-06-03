@@ -15,11 +15,11 @@ int main()
   cout<<"Au depart :"<<endl;
   s.dessine_sur(ecran);
 
-  s.evolue(0.031);
+ s.evolue(0.031);
   cout<<"Apres un pas de calcule :"<<endl;
   s.dessine_sur(ecran);
 
-  s.evolue(0.031);
+ s.evolue(0.031);
   cout<<"Apres deux pas de calcule :"<<endl;
   s.dessine_sur(ecran);
 

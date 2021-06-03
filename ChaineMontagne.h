@@ -11,6 +11,7 @@ class ChaineMontagne : public Montagne {
 	
 	public:
 	ChaineMontagne(std::vector<Montagne*> montagnes);
+	ChaineMontagne(ChaineMontagne const&)=delete;
 	
 	double altitude(double x, double y) const override ;
 	void affiche_type() const override;

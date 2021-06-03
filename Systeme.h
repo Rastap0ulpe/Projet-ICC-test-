@@ -22,6 +22,10 @@ class Systeme: public Dessinable {
 		champ_p.calcule_laplacien(*M);
         champ_p.resolution(pow(lambda,4)*pow(10,-4),5000,*M);
 	};
+	Systeme(Systeme const&)=delete;
+	~Systeme(){M.release();
+		
+	}
 	void deplacer_nuages(double delta_t);
 	std::ostream& affiche(std::ostream& out) const;
     void evolue(double dt = 0.031);
