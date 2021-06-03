@@ -34,15 +34,13 @@
 }
 */
 void VueOpenGL::dessine(Montagne const& a_dessiner){
-    int max_x(30);
-    int max_y(30);
 
 
     QMatrix4x4 matrice;
     prog.setAttributeValue(CouleurId,0.5, 0.5, 0.5);
   matrice.setToIdentity();
-      for(int i=0;i<max_x;i++){
-          for(int j=0;j<max_y;j++){
+      for(int i=0;i<a_dessiner.max_x;i++){
+          for(int j=0;j<a_dessiner.max_y;j++){
 
                 Vecteur3D v1(i,j,a_dessiner.altitude(i,j));
                 Vecteur3D v2(i+1,j,a_dessiner.altitude(i+1,j));

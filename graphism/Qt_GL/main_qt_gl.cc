@@ -18,11 +18,11 @@ int main(int argc, char* argv[])
   GLWidget w(&M2,30,30,30,20.0/29.0);*/
 
  Montagne_simple m(15,15,15,5,5);
- GLWidget w(&m,30,30,30,20.0/29.0);
+ GLWidget w(&m,40,40,30,20.0/29.0);
   w.resize(1000,1000);
   w.move(900,5);
   w.show();
-  w.pause();
+
 
 
   return a.exec();

@@ -18,7 +18,9 @@ class Systeme: public Dessinable {
 	std::unique_ptr<Montagne> M;
 	public:
     Systeme(Montagne* m, int N_x, int N_y, int N_z, double lambda):champ_p(N_x,N_y,N_z,lambda), ciel(champ_p), M(m) {
-		champ_p.initialise(20,*M);
+        M->max_x=N_x;
+        M->max_y=N_y;
+        champ_p.initialise(20,*M);
 		champ_p.calcule_laplacien(*M);
         champ_p.resolution(pow(lambda,4)*pow(10,-4),5000,*M);
 	};

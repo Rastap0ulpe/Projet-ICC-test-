@@ -108,9 +108,6 @@ void GLWidget::keyPressEvent(QKeyEvent* event)
 	pause();
 	break;
 
-  case Qt::Key_Z:
-    S.evolue(0.031);
-      break;
   };
 
   update(); // redessine

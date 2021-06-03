@@ -20,7 +20,7 @@ public:
 
   }
   virtual ~GLWidget() = default;
-void pause();
+  void pause();
 
   // Les 3 méthodes clés de la classe QOpenGLWidget à réimplémenter
   virtual void initializeGL()                  override;
