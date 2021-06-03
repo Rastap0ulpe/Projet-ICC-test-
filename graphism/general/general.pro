@@ -5,7 +5,6 @@ QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES = ..\..\ChaineMontagne.cc \
     ..\..\ChampPotentiels.cc \
-    ..\..\Montagne.cc \
     ..\..\MontagneSimple.cc \
    ..\..\Nuages.cc \
    ..\..\Systeme.cc \
@@ -15,7 +14,6 @@ SOURCES = ..\..\ChaineMontagne.cc \
 HEADERS += ..\..\Boite3D.h \
     ..\..\ChaineMontagne.h \
     ..\..\ChampPotentiels.h \
-    ..\..\Montagne.h \
     ..\..\MontagneSimple.h \
     ..\..\Nuages.h \
     ..\..\Systeme.h \
