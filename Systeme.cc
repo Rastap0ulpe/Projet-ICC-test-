@@ -7,8 +7,7 @@
 using namespace std;
 
 ostream& Systeme::affiche(ostream& out) const{
-	out<<"une montagne"<<endl;
-	M -> montagne_affiche();
+    M -> affiche_type();
 	out<< "un champ de potentiels :"<<endl;
 	out<<"Nx ="<<champ_p.taille_x()<< " Ny ="<<champ_p.taille_y()<< " Nz="<<champ_p.taille_z()<<endl;
 	out<<"Lambda ="<<champ_p.get_lambda()<<endl;

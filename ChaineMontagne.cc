@@ -30,10 +30,7 @@ double ChaineMontagne::altitude(double x, double y) const  {
 }
 
 
-void ChaineMontagne::montagne_affiche() const {
-	cout<<"composee de "<<composante.size()<<" montagne"<<endl;
-	for(size_t i(0) ; i<composante.size();++i){
-		cout<<"Montagne "<<i+1<<" : "<<endl;
-		composante[i]->montagne_affiche();
-	}
+void ChaineMontagne::affiche_type() const {
+	cout<<"Chaine de montagne composee de "<<composante.size()<<" montagne"<<endl;
+	
 }

@@ -15,7 +15,7 @@ public:
   GLWidget(Montagne*  m , unsigned int N_x,unsigned int N_y,unsigned int N_z, double lambda, QWidget* parent = nullptr)
     : QOpenGLWidget(parent), S(m,N_x,N_y,N_z,lambda)
   {
-      M=m;
+      M=std::unique_ptr<Montagne>(m);
       S.initialise_ciel();
 
   }
@@ -43,7 +43,7 @@ void pause();
   QTime chronometre;
 
   // objets à dessiner, faire évolue
-  Montagne* M;
+  std::unique_ptr<Montagne> M;
   Systeme S;
 
 

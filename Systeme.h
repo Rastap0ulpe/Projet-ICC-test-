@@ -56,6 +56,10 @@ class Systeme: public Dessinable {
 		ciel=c;
 		ciel.initialise_enthalpie();
 	};
+	
+	
+
 };
+
 
 std::ostream& operator<<(std::ostream& out, Systeme const& s);

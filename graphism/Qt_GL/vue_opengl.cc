@@ -82,9 +82,9 @@ QMatrix4x4 matrice;
 
 prog.setAttributeValue(CouleurId, 0.0,0.0, 1.0);
 
-unsigned int a(a_dessiner.get_systeme_taille_x());
-unsigned int b(a_dessiner.get_systeme_taille_y());
-unsigned int c(a_dessiner.get_systeme_taille_z());
+size_t a(a_dessiner.get_systeme_taille_x());
+size_t b(a_dessiner.get_systeme_taille_y());
+size_t c(a_dessiner.get_systeme_taille_z());
 
 
 Vecteur3D vec(0,0,0);
@@ -114,12 +114,13 @@ Vecteur3D vec(0,0,0);
                 if(a_dessiner.systeme_pluie(i,j,k)){
                     prog.setAttributeValue(CouleurId, 0.0, 0.0, 1.0);
 
-                    for(size_t l(1);l<=k;l++){
-                        matrice.setToIdentity();
-                        matrice.translate(i,j,l);
-                        dessinepluie(matrice);
+                                        for(size_t l(1);l<=k;l++){
+                                            matrice.setToIdentity();
+                                            matrice.translate(i,j,l);
+                                            dessinepluie(matrice);
 
-                    }
+                                        }
+
 
 
                 }
@@ -280,6 +281,7 @@ void VueOpenGL::dessinevecteur(const QMatrix4x4 &point_de_vue, Vecteur3D v){
 
 
     glEnd();
+
 
 }
 

@@ -13,7 +13,7 @@ class Montagne_simple: public Montagne{
 	Montagne_simple(int x,int y,double h,double sigmax, double sigmay):i_0(x),j_0(y),H(h),sigma_i(sigmax),sigma_j(sigmay) {};
 	double altitude(double x, double y) const override ;
 
-	void montagne_affiche() const override;
+	void affiche_type() const override;
 	void dessine_sur(SupportADessin& support) override {
 		 support.dessine(*this); 
 		 }

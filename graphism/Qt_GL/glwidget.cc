@@ -37,7 +37,7 @@ void GLWidget::resizeGL(int width, int height)
 void GLWidget::paintGL()
 {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  M ->dessine_sur(vue);
+  M -> dessine_sur(vue);
   S.dessine_sur(vue);
 }
 

@@ -23,3 +23,6 @@ HEADERS += ..\..\Boite3D.h \
     ..\..\constantes.h \
    ..\..\dessinable.h \
     ..\..\SupportADessin.h
+
+
+

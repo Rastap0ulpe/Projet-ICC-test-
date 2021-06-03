@@ -13,7 +13,7 @@ class ChaineMontagne : public Montagne {
 	ChaineMontagne(std::vector<Montagne*> montagnes);
 	
 	double altitude(double x, double y) const override ;
-	void montagne_affiche() const override;
+	void affiche_type() const override;
 	void dessine_sur(SupportADessin& support) override {
 		 support.dessine(*this); 
 		 }

@@ -146,9 +146,10 @@ void ChampPotentiels::iteration(){
 
 V_vent ChampPotentiels::vitesse(unsigned int i, unsigned int j, unsigned int k) const{ 
 	V_vent V={20,0,0};
-	if (i==0 or i == N_x-1 or j == 0 or j == N_y-1 or k==0 or k== N_z-1 ){
+	if (i==0 or i == N_x-1 or j == 0 or j == N_y-1 or k==0 or k== N_z-1){
 		return V;
 	}
+	
 	double x,y,z;
 	double c(0.5*(1/lambda));
 	x = champ_p[i][j+1][k].get_potentiel().get_y() - champ_p[i][j-1][k].get_potentiel().get_y()-champ_p[i][j][k+1].get_potentiel().get_x() +champ_p[i][j][k-1].get_potentiel().get_x();

@@ -7,10 +7,11 @@ using namespace std;
  
 void TextViewer::dessine(Montagne const& M) 
 {
-	M.affiche();
+    M.affiche_type();
 }
 
 void TextViewer::dessine(Systeme  const& system)
 {
 	system.affiche_ciel_system();
+    cout<<endl;
 }
