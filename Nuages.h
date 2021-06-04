@@ -95,5 +95,6 @@ class Ciel : public Boite3D{
 		void affiche_cube(size_t i, size_t j, size_t k) const;
 		std::vector<double> get_vitesse_cube(size_t i, size_t j,size_t k) const;
 		double get_norme_cube(size_t i, size_t j,size_t k) const;
+		void qty_pluie() const;
 		
 };

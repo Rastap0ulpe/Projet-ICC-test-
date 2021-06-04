@@ -20,24 +20,23 @@ ostream& operator<<(ostream& out, Systeme const& s){
 	return s.affiche(out);
 };
 
-void Systeme::evolue(double dt /* = 0.031*/){
-	//ciel.pluie();
+void Systeme::evolue(SupportADessin &support, double dt /* = 0.031*/){
+	ciel.pluie();
 	deplacer_nuages(dt);
-	//dessine_sur(support);
+	dessine_sur(support);
 }
 
 
-void Systeme::demarre(double dt){
-   	champ_p.resolution(0.000022621843,3000,*M);
-	Ciel c(champ_p);
-	ciel=c;
-	ciel.initialise_enthalpie();
-    /*dessine_sur(support); //
-	cout<<endl;*/
-    evolue(dt);
+void Systeme::demarre(SupportADessin& support, double dt){
+	initialise_ciel();
+	dessine_montagne(support);
+    dessine_sur(support); 
+	cout<<endl;
+    evolue(support,dt);
 	
 	
 }
+
 void Systeme::deplacer_nuages(double delta_t ){
     Ciel ciel_nouveau(ciel);
 	for(size_t i(1); i< ciel.taille_x()-1;++i){
@@ -68,7 +67,7 @@ void Systeme::deplacer_nuages(double delta_t ){
 	
 }
 
-void Systeme::affiche_ciel_system() const{
+void Systeme::affiche_ciel_system() const {
 	for(size_t i(1); i < ciel.taille_x()-1;++i){
 		
 		for(size_t j(1); j< ciel.taille_y()-1;++j){

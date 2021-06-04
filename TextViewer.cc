@@ -10,8 +10,13 @@ void TextViewer::dessine(Montagne const& M)
     M.affiche_type();
 }
 
-void TextViewer::dessine(Systeme  const& system)
+void TextViewer::dessine(Systeme  const& systeme)
 {
-	system.affiche_ciel_system();
+	flot<<"quantite de pluie (i j quantite pluie):"<<endl;
+	systeme.affiche_pluie();
+	cout<<endl;
+	flot<<"co-ordonee des nuages"<<endl;
+	systeme.affiche_ciel_system();
+	
     cout<<endl;
 }

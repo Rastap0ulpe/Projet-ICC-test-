@@ -18,7 +18,7 @@ void  Montagne_simple::affiche_type() const {
 
 	cout<<"Montagne gaussienne de parametre :"<<endl;
 	cout<<"i0 = "<< i_0<<endl;
-	cout<<"i0 = "<<j_0<<endl;
+	cout<<"j0 = "<<j_0<<endl;
 	cout<<"h = "<< H <<endl;
 	cout<<"Si0 = "<< sigma_i<<endl;
 	cout<<"Sj0 = "<< sigma_j<<endl;

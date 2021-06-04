@@ -5,7 +5,7 @@
 #include "Boite3D.h"
 #include "Montagne.h"
 
-constexpr double epsilon(0.1);
+
 class Potentiel{
 	private:
 	Vecteur2D potentiel;
@@ -34,6 +34,7 @@ typedef std::vector<double> V_vent;
 class ChampPotentiels : public Boite3D{
 	private:
 	champ_potentiel champ_p;
+	void iteration();
 	public:
 	ChampPotentiels(int x,int y, int z, double l): Boite3D(x,y,z,l), champ_p(N_x,std::vector<std::vector<Potentiel>>(N_y,std::vector<Potentiel>(N_z))){};
 	void initialise(double v_loin,Montagne const& M );
@@ -41,7 +42,6 @@ class ChampPotentiels : public Boite3D{
 	void affiche_potentiel() const;
 	void affiche_laplacien() const;
 	double erreur() const;
-	void iteration();
 	void resolution(double error, unsigned int max, Montagne const& M , bool affiche=false); 
 	V_vent vitesse(unsigned int i, unsigned int j, unsigned int k) const;
 	void affiche_vitesse(V_vent vent_vit) const;

@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
   w.resize(1000,1000);
   w.move(900,5);
   w.show();
-  w.pause();
+
 
 
   return a.exec();

@@ -13,11 +13,12 @@ ChaineMontagne::ChaineMontagne(vector<Montagne*> montagnes){
 	
 	for (auto montagne : montagnes){
 		if(montagne != nullptr){
-		composante.push_back(unique_ptr<Montagne>(montagne));
+		composante.push_back(montagne);
 		}
 	}
 	
 }
+
 
 double ChaineMontagne::altitude(double x, double y) const  {
 	double max(0);

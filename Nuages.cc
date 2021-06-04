@@ -103,9 +103,6 @@ void Ciel::pluie(){
 					++n;
 			}
 		}
-		/*if (n !=0){
-        cout<<i<<" "<<j<<" la quantite de pluie au sol est: "<<n<<endl;
-    }*/
 	}
 }
 }
@@ -128,4 +125,23 @@ double Ciel::get_norme_cube(size_t i, size_t j,size_t k) const{
 
 bool Ciel::pluie_GL(size_t i, size_t j, size_t k) const {
     return air[i][j][k].pluie();
+}
+
+void Ciel::qty_pluie() const{
+	for(size_t i(1); i< N_x-1;++i){
+		unsigned int n(0);
+		
+		for(size_t j(1); j< N_y-1;++j){
+			
+			for(size_t k(1); k <N_z-1; ++k){
+				if (air[i][j][k].pluie()){
+					++n;
+			}
+		}
+		if (n!= 0){
+			cout<<i<<" "<<j<<" "<<n<<endl;
+		}
+	}
+	
+}
 }

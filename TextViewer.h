@@ -17,7 +17,7 @@ public:
   TextViewer(TextViewer&&)            = default; 
   TextViewer& operator=(TextViewer&&) = default;
  
- virtual void dessine(Systeme  const& system) override;
+ virtual void dessine(Systeme  const& systeme) override;
   virtual void dessine(Montagne const& M) override; 
 private:
   std::ostream& flot;

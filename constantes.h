@@ -15,4 +15,5 @@ namespace const_sys{
 	extern const double P_ref;
 	extern const double cte;
 	extern const double taux_hum;
+	extern const double epsilon;
 }

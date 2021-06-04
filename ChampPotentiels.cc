@@ -4,6 +4,7 @@
 #include "ChampPotentiels.h"
 #include "Montagne.h"
 #include "Vecteur2D.h"
+#include "constantes.h"
 using namespace std;
 
 
@@ -115,7 +116,7 @@ void ChampPotentiels::iteration(){
 			
 			for(size_t k(1); k <N_z-1; ++k){
 			
-				v = champ_p[i][j][k].get_potentiel() + champ_p[i][j][k].get_laplacien().mult(epsilon);
+				v = champ_p[i][j][k].get_potentiel() + champ_p[i][j][k].get_laplacien().mult(const_sys::epsilon);
 				champ_p[i][j][k].set_potentiel(v);
 		
 				

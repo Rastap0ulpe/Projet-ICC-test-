@@ -37,7 +37,7 @@ void GLWidget::resizeGL(int width, int height)
 void GLWidget::paintGL()
 {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  M -> dessine_sur(vue);
+  S.dessine_montagne(vue);
   S.dessine_sur(vue);
 }
 
@@ -107,11 +107,8 @@ void GLWidget::keyPressEvent(QKeyEvent* event)
   case Qt::Key_Space:
 	pause();
 	break;
-
-  case Qt::Key_Z:
-    S.evolue(0.031);
-      break;
   };
+
 
   update(); // redessine
 }
@@ -122,7 +119,7 @@ void GLWidget::timerEvent(QTimerEvent* event)
   Q_UNUSED(event);
 
   //double dt = chronometre.restart() / 1000;
-  S.evolue(0.031);
+  S.evolue(vue,0.031);
   update();
 }
 

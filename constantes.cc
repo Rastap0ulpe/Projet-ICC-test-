@@ -16,4 +16,5 @@ namespace const_sys{
 	extern const double P_ref(101325);
 	extern const double cte(0.5*v_loin*v_loin + h_loin);
 	extern const double taux_hum(8.0/1000.0);
+	extern const double epsilon(0.1);
 }
